@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.dao.IUsersDAO">
+	<select id="findAll" resultType="com.book.model.Users">
+	select * from users
+	<where>
+	<if test="user_name != null and user_name != ''">
+		and user_name like '%${user_name}%'
+	</if>
+	 <if test="minBalance > 0">
+		and balance &gt;= #{minBalance}
+	</if>
+	<if test="maxBalance > 0">
+		and balance &lt;= #{maxBalance}
+	</if>
+	<if test="startDate != null and startDate != ''">
+		and register_date &gt;= #{startDate}
+	</if>
+	<if test="endDate != null and endDate != ''">
+		and register_date &lt;= #{endDate}
+	</if>   
+	</where>
+		<if test="page>0">
+		limit #{page},#{limit}
+	</if>
+	</select> 
+	 <select id="findAllById" resultType="com.book.model.Users">
+	select * from users where user_id = #{a}
+	</select>
+	<insert id="add">
+	INSERT INTO `bookmall`.`users`
+	(`user_id`, `user_name`, `user_password`, `nickname`, `register_date`, 
+	`login_time`, `face`, `balance`, `state`, `phone`, `address_id`) 
+	VALUES (null, #{user_name}, #{user_password}, #{nickname}, #{register_date}, 
+	#{login_time}, #{face}, #{balance}, #{state}, #{phone}, #{address_id});
+	</insert>
+	<update id="edit">
+	UPDATE `bookmall`.`users` SET `user_name` = #{user_name},
+  	`user_password` = #{user_password}, `nickname` = #{nickname}, 
+	 `register_date` = #{register_date}, `login_time` = #{login_time}, 
+	 `face` = #{face}, `balance` = #{balance}, `state` = #{state},
+	  `phone` = #{phone}, `address_id` = #{address_id} WHERE `user_id` = #{user_id}
+	
+	</update>
+	<delete id="del">
+	delete from users where user_id = #{a}
+	</delete> 
+</mapper>

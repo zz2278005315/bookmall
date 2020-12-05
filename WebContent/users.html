@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+		<script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<table id="demo" lay-filter="test"></table>
+ 
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 312
+    ,url: 'findAll.do' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'user_id', title: '用户编号',sort: true, fixed: 'left'}
+      ,{field: 'user_name', title: '登入名'}
+      ,{field: 'user_password', title: '密码'}
+      ,{field: 'nickname', title: '名称'} 
+      ,{field: 'register_date', title: '注册时间'}
+      ,{field: 'login_time', title: '上次登入时间'}
+      ,{field: 'face', title: '头像'}
+      ,{field: 'balance', title: '余额'}
+      ,{field: 'state', title: '状态'}
+      ,{field: 'phone', title: '手机号'}
+      ,{field: 'address_id', title: '地址'}
+      
+    ]]
+  });
+  
+});
+</script>
+		
+	</body>
+</html>

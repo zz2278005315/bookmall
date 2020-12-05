@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.dao.IGoodsDAO">
+	<select id="findAll" resultType="com.book.model.Goods">
+		select * from Goods
+		<if test="page>0">
+		limit #{page},#{limit}
+	</if>
+	</select> 
+	 <select id="findAllById" resultType="com.book.model.Goods">
+	select * from Goods where goods_id = #{a}
+	</select>
+	<insert id="add">
+	INSERT INTO `bookmall`.`goods`(`goods_id`, `goods_name`, `price`, `picture`, `description`, `stock`, `category_id`) VALUES (null, #{goods_name}, #{price}, #{picture}, #{description}, #{stock},#{category_id});
+	</insert>
+	<update id="edit">
+	UPDATE `bookmall`.`goods` SET `goods_name` = #{goods_name}, `price` = #{price}, `picture` = #{picture}, `description` = #{description}, `stock` = #{stock}, `category_id` = #{category_id} WHERE `goods_id` = #{goods_id};
+	</update>
+	<delete id="del">
+	delete from Goods where goods_id = #{a}
+	</delete> 
+</mapper>

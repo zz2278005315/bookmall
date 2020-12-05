@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+		<script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<table id="demo" lay-filter="test"></table>
+ 
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 312
+    ,url: 'categoryFindAll.do' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'category_id', title: 'ID',sort: true, fixed: 'left'}
+      ,{field: 'category_name', title: '分类名称'}
+      ,{field: 'parent_id', title: '父分类'}
+      ,{field: 'state', title: '状态'} 
+      
+    ]]
+  });
+  
+});
+</script>
+		
+	</body>
+</html>

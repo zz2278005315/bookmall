@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.dao.IOrder_detailsDAO">
+	<select id="findAll" resultType="com.book.model.Order_details">
+	select * from order_details
+	</select>
+	
+	<select id="findById" resultType="com.book.model.Order_details">
+	select * from order_details where details_id #{a}
+	</select>
+   
+   <insert id="add">INSERT INTO `bookmall`.`order_details`
+   (`details_id`, `order_id`, `goods_id`, `num`) VALUES (null, #{order_id}, #{goods_id}, #{num})</insert>
+    
+    <update id="edit">UPDATE `bookmall`.`order_details` SET ` `order_id`=#{order_id}
+     `goods_id` = #{goods_id}, `num` = {num} WHERE `details_id` = {details_id};</update>
+	
+	<delete id="del">delete from order_details where details_id = #{a}</delete>
+	
+	
+</mapper>

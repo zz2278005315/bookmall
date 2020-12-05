@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.dao.IAddressDAO">
+	<select id="findAll" resultType="com.book.model.Address">
+		select * from Address
+		<if test="page>0">
+		limit #{page},#{limit}
+	</if>
+	</select> 
+	 <select id="findAllById" resultType="com.book.model.Address">
+	select * from Address where address_id = #{a}
+	</select>
+	 <insert id="add">
+	INSERT INTO `bookmall`.`address`(`address_id`, `province`, `city`, `country`, `details`, `user_id`) VALUES (null, #{province}, #{city}, #{country}, #{details}, #{user_id});
+	</insert>
+	<update id="edit">
+	UPDATE `bookmall`.`address` SET `province` = #{province}, `city` = #{city}, `country` = #{country}, `details` = #{details}, `user_id` = #{user_id} WHERE `address_id` = #{address_id};
+	</update> 
+	<delete id="del">
+	delete from Address where address_id = #{a}
+	</delete> 
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!--执行时显示sql  -->
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+    <!--注册映射文件  -->
+     <mappers>
+         <mapper resource="com/book/dao/UsersMapper.xml"/>
+    	 <mapper resource="com/book/dao/AdminMapper.xml"/>
+    	 <mapper resource="com/book/dao/OrdersMapper.xml"/>
+    	  <mapper resource="com/book/dao/Order_detailsMapper.xml"/>
+    	  <mapper resource="com/book/dao/CartMapper.xml"/>
+    	<mapper resource="com/book/dao/AddressMapper.xml"/>
+    	<mapper resource="com/book/dao/CategoryMapper.xml"/>
+    	<mapper resource="com/book/dao/GoodsMapper.xml"/>
+
+    </mappers>
+    
+    
+</configuration>

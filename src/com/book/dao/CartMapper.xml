@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.dao.ICartDAO">
+	<select id="findAll" resultType="com.book.model.Cart">
+	select * from cart
+	</select>
+	
+	<select id="findById" resultType="com.book.model.Cart">
+	select * from cart where cart_id = #{a}
+	</select>
+   
+    <insert id="add">INSERT INTO `bookmall`.`cart`(`cart_id`, `user_id`, `goods_id`, `num`)
+     VALUES (null, #{user_id}, #{goods_id}, #{num})</insert>
+	
+	<delete id="del">delete from cart where  cart_id = #{a}</delete>
+	
+	<update id="edit">UPDATE `bookmall`.`cart` SET 
+        `goods_id` = #{goods_id}, `num` = #{num} WHERE `cart_id` = #{cart_id}</update> 
+</mapper>
